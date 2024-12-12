@@ -29,16 +29,34 @@ The application is built using the MVVM architecture:
 
 ```plaintext
 lib/
-|-- main.dart            // Entry point of the application.
+|-- main.dart           
+|-- app/
+|   |-- app.dart
 |-- core/
-|   |-- network/
-|       |-- graphql_client.dart // GraphQL client setup.
+|   |-- constants/
+|       |-- api_constants.dart
+|   |-- injection/
+|       |-- injection.dart
+|   |-- observer/
+|       |-- bloc_observer.dart
+|   |-- router/
+|       |-- route_manager.dart
 |-- models/
-|   |-- country.dart     // Data model for Country.
+|   |-- country_model    
+|       |-- country.dart
+|       |-- country.freezed.dart
+|       |-- country.g.dart
+|   |-- repo   
+|       |-- repo.dart
+|   |-- services   
+|       |-- graphql_service_base.dart
+|       |-- graphql_service_impl.dart
 |-- viewmodels/
-|   |-- country_cubit.dart  // Cubit for managing country state.
+|   |-- country_cubit.dart 
+|   |-- country_state.dart 
+|   |-- country_cubit.freezed.dart
 |-- views/
-|   |-- home_page.dart   // UI for displaying countries.
+|   |-- home_page.dart   
 |-- widgets/
-    |-- country_card.dart // Reusable widget for displaying country details.
+    |-- country_card.dart 
 ```

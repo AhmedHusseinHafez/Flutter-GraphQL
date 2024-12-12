@@ -4,12 +4,8 @@ import 'package:mvvm_cubit_graphql/app/app.dart';
 import 'package:mvvm_cubit_graphql/core/injection/injection.dart';
 import 'package:mvvm_cubit_graphql/core/observer/bloc_observer.dart';
 
-void main() {
-  Future.wait([
-    initGetIt(),
-  ]).then((_) {
-    Bloc.observer = AppObserver();
+Future<void> main() async {
+  await initGetIt().then((_) => Bloc.observer = AppObserver());
 
-    runApp(MyApp());
-  });
+  runApp(MyApp());
 }
