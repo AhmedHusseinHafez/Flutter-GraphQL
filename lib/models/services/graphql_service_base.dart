@@ -1,5 +1,6 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:mvvm_cubit_graphql/core/constants/api_constants.dart';
+import 'package:mvvm_cubit_graphql/core/networking/error_handler.dart';
 
 abstract class GraphQLServiceBase<C, T> {
   C get client;
@@ -13,15 +14,11 @@ class GraphQLService implements GraphQLServiceBase<GraphQLClient, QueryResult> {
   static const String _endpoint = ApiConstants.baseUrl;
   late final GraphQLClient _client;
 
- 
-
   GraphQLService() {
     _buildClient();
-    
   }
 
   void _buildClient() {
-
     final Link link = HttpLink(_endpoint);
 
     _client = GraphQLClient(
@@ -47,12 +44,13 @@ class GraphQLService implements GraphQLServiceBase<GraphQLClient, QueryResult> {
       final result = await _client.query(options);
 
       if (result.hasException) {
-        throw Exception(result.exception!.toString());
+        throw ApiErrorHandler.getErrorMessage(
+            result.exception?.graphqlErrors.first);
       }
 
       return result;
     } catch (e) {
-      throw Exception(e.toString());
+      throw ApiErrorHandler.getErrorMessage(e);
     }
   }
 }

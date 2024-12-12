@@ -51,6 +51,8 @@ lib/
 |   |-- services   
 |       |-- graphql_service_base.dart
 |       |-- graphql_service_impl.dart
+|-- queries/
+|       |-- country_queries.dart
 |-- viewmodels/
 |   |-- country_cubit.dart 
 |   |-- country_state.dart 
