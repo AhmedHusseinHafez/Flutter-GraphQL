@@ -1,23 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'viewmodels/country_cubit.dart';
-import 'views/home_page.dart';
+import 'package:mvvm_cubit_graphql/app/app.dart';
+import 'package:mvvm_cubit_graphql/core/injection/injection.dart';
+import 'package:mvvm_cubit_graphql/core/observer/bloc_observer.dart';
 
 void main() {
-  runApp(const MyApp());
-}
+  Future.wait([
+    initGetIt(),
+  ]).then((_) {
+    Bloc.observer = AppObserver();
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter MVVM Cubit GraphQL',
-      home: BlocProvider(
-        create: (_) => CountryCubit(),
-        child: const HomePage(),
-      ),
-    );
-  }
+    runApp(MyApp());
+  });
 }

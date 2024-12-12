@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../core/network/graphql_client.dart';
+
+import '../../models/country_model/country.dart';
 
 class CountryCard extends StatelessWidget {
   final Country country;
@@ -12,7 +13,8 @@ class CountryCard extends StatelessWidget {
       child: ListTile(
         leading: Text(country.emoji, style: const TextStyle(fontSize: 24)),
         title: Text(country.name),
-        subtitle: Text(country.continent),
+        subtitle: Text(country.continent.name),
+        trailing: Text(country.code),
       ),
     );
   }
