@@ -17,7 +17,7 @@ class CountryCubit extends Cubit<CountryState> {
       final countries = await _repo.fetchCountries();
       emit(CountryState.loaded(countries));
     } catch (e) {
-      emit(CountryState.error('Failed to fetch countries: $e'));
+      emit(CountryState.error('$e'));
     }
   }
 }

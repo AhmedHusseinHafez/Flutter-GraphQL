@@ -22,7 +22,7 @@ class Repo {
 
       return countriesJson.map((json) => Country.fromJson(json)).toList();
     } catch (e) {
-      throw Exception(e.toString());
+      throw e.toString();
     }
   }
 }
